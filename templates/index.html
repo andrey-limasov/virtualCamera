@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% load static %}
+    <div style="display:none;">
+      <img id="kabBG" src="{% static 'img/Kabinet-s-beloj-mebelyu.jpg' %}" width="1280" height="720" />
+    </div>
+    <canvas id="liveView" width="1280" height="720" style="border:1px solid #000000;">
+
+    </canvas>
+    <script>
+        function drawTime() {
+            var currentdate = new Date();
+            var datetime = "Time: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/"
+                + currentdate.getFullYear() + " @ "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+            var canvas = document.getElementById("liveView");
+            var ctx = canvas.getContext("2d");
+            var img = document.getElementById("kabBG");
+            ctx.drawImage(img, 0, 0);
+            ctx.font = "14px Arial";
+            ctx.fillStyle = 'white';
+            ctx.fillRect(20, 680, 80, 20);
+            ctx.fillStyle = 'black';
+            ctx.fillText("Ауд. 2335", 25, 695);
+            ctx.font = "14px Arial";
+            ctx.fillStyle = 'white';
+            ctx.fillRect(995, 35, 200, 20);
+            ctx.fillStyle = 'black';
+            ctx.fillText(datetime, 1000, 50);
+        }
+        setInterval(drawTime, 1000);
+    </script>
+{% endblock %}
+
+{% block sidebar %}
+    {% load static %}
+    <ul>
+        <li>
+            <a href="{% url 'index' %}">Live Video</a>
+        </li>
+        <li>
+            <a href="{% url 'archive' %}">Video archive</a>
+        </li>
+    </ul>
+{% endblock %}

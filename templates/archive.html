@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% load static %}
+    <p>Flag: 123456789</p>
+    <table>
+        <thead>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>Size</th>
+            <th>Download</th>
+        </thead>
+        <tr>
+            <td>29/11/2022 @ 08:55</td>
+            <td>05:27</td>
+            <td>30 MByte</td>
+            <td><a href="{% url 'index' %}">Link</a></td>
+        </tr>
+    </table>
+{% endblock %}
+
+{% block sidebar %}
+    {% load static %}
+    <ul>
+        <li>
+            <a href="{% url 'index' %}">Live Video</a>
+        </li>
+        <li>
+            <a href="{% url 'archive' %}">Video archive</a>
+        </li>
+    </ul>
+{% endblock %}

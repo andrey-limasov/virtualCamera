@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-c(3*ew38g%-%##)tn_021h4g+6y9b)+a$i&c2ztposu^w)t$ti
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '192.168.10.115']
+ALLOWED_HOSTS = ['localhost', '192.168.10.115', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Add our new application
+    'cameraadmin.apps.CameraadminConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/cameraadmin/'
